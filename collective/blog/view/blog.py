@@ -1,6 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
-from Products.Five import BrowserView
+from plone.dexterity.browser.view import DefaultView
 from collective.blog.view.interfaces import IBlogEntryRetriever
 try:
     from plone.app.discussion.interfaces import IConversation
@@ -8,7 +8,7 @@ try:
 except ImportError:
     USE_PAD = False
     
-class BlogView(BrowserView):
+class BlogView(DefaultView):
     """
     Blog view
     """

@@ -1,12 +1,12 @@
 from Products.CMFCore.utils import getToolByName
-from Products.Five import BrowserView
+from plone.dexterity.browser.view import DefaultView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 import re
 
 START_RE = re.compile('<h2[^<>]+blogItemHeading[^<>]+>') # Standard plone header
 END_RE = re.compile('</h2>')
 
-class DefaultItemView(BrowserView):
+class DefaultItemView(DefaultView):
     """
     The default blog item view
     """

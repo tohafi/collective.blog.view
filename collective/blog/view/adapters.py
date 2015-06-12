@@ -32,7 +32,7 @@ class FolderEntryGetter:
     def get_entries(self, year=None, month=None):
         catalog = getToolByName(self.context, 'portal_catalog')
         query = self._base_query()
-        
+
         if year:
             if month:
                 lastday = calendar.monthrange(year, month)[1]
@@ -42,7 +42,8 @@ class FolderEntryGetter:
                 startdate = DateTime(year, 1, 1, 0, 0)
                 enddate = DateTime(year, 12, 31, 0, 0)
             query['effective'] = dict(query=(startdate, enddate),
-                                      range='minmax')
+                                      range='min:max')
+
         return catalog.searchResults(**query)
 
     

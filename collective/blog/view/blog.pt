@@ -8,19 +8,9 @@
         
       <div tal:replace="structure provider:plone.abovecontenttitle" />      
       
-      <h1 class="documentFirstHeading" tal:condition="python:getattr(here,'widget', None)">
-        <metal:field use-macro="python:here.widget('title', mode='view')">
-          Title
-        </metal:field>
-        <span class="visualClear"><!-- --></span>
-      </h1>
+      <h1 class="documentFirstHeading" tal:content="context/title" />
       
-      <p class="documentDescription" tal:condition="python:getattr(here,'widget',None)">
-        <metal:field use-macro="python:here.widget('description', mode='view')">
-          Description
-        </metal:field>
-        <span class="visualClear"><!-- --></span>
-      </p>
+      <p class="documentDescription" tal:content="context/description" tal:condition="context/description" />
 
 
       <metal:empty metal:define-slot="no_items_in_listing">
@@ -40,9 +30,7 @@
           <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
         </a>
         <p class="discreet">
-          <metal:field use-macro="python:here.widget('imageCaption', mode='view')">
-            Image Caption
-          </metal:field>
+            <span tal:content="structure view/w/imageCaption/render" />
         </p>
       </div>
       
